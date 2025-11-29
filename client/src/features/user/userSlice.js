@@ -14,7 +14,6 @@ export const fetchUser = createAsyncThunk(
         const { data } = await api.get('/api/user/data', {
           headers: { Authorization: `Bearer ${token}` },
         })
-        console.log("data", data)
         return data.success ? data.user : null
       } catch (err) {
         console.error(

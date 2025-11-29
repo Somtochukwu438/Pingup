@@ -22,21 +22,11 @@ app.use('/api/user', userRouter);
 app.use('/api/post', postRouter)
 app.use('/api/story', storyRouter)
 app.use('/api/message', messageRouter)
-// 🔹 test route – should bypass everything
-app.get('/test', (req, res) => {
-  console.log('GET /test hit');
-  res.send('Server is alive');
-});
 
 app.get('/', (req, res) => res.send('Server is running'));
-setInterval(() => {
-    console.log('tick - server still alive');
-  }, 5000);
 
-  
 app.use('/api/inngest', serve({ client: inngest, functions }))
   
+const PORT = process.env.PORT || 4000;
 
-const PORT = 4000;
-
-app.listen(PORT, () => console.log(`MINI server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
